@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Producto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Añadir Nuevo Producto</h1>
+        <form action="/products/create" method="POST">
+            <div class="form-group">
+                <label for="name">Nombre del Producto:</label>
+                <input type="text" id="name" name="name" required class="form-control" placeholder="Ingresa el nombre del producto">
+            </div>
+            <div class="form-group">
+                <label for="price">Precio:</label>
+                <input type="number" id="price" name="price" required class="form-control" placeholder="Ingresa el precio del producto">
+            </div>
+            <div class="form-group">
+                <label for="image">URL de la Imagen:</label>
+                <input type="text" id="image" name="image" required class="form-control" placeholder="Ingresa la URL de la imagen del producto">
+            </div>
+            <div class="form-group">
+                <label for="stock">Stock:</label>
+                <input type="number" id="stock" name="stock" required class="form-control" placeholder="Ingresa la cantidad en stock">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Añadir Producto</button>
+                <a href="/admin" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

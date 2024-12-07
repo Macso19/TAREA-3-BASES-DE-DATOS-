@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+</head>
+<body>
+    <h1>Clientes Registrados</h1>
+    <a href="/clientes/create">
+        <button>Crear Cliente</button>
+    </a>
+    <table>
+        <thead>
+            <tr>
+                <th>RUT</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each clientes}}
+            <tr>
+                <td>{{this.rut_cliente}}</td>
+                <td>{{this.nombre}}</td>
+                <td>{{this.email}}</td>
+                <td>
+                    <a href="/clientes/edit/{{this.rut_cliente}}">
+                        <button>Editar</button>
+                    </a>
+                    <form action="/clientes/delete/{{this.rut_cliente}}" method="POST" style="display:inline;">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>

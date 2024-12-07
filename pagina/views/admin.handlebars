@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Administración General</h1>
+
+        <h2>Monto Total de Ventas: <strong>${{totalSales}}</strong></h2>
+
+        <!-- Botón para añadir producto -->
+        <a href="/products/create" class="btn btn-success mb-4">Añadir Producto</a>
+
+        <!-- Mensajes de éxito o error -->
+        {{#if message}}
+            <div class="alert alert-info">{{message}}</div>
+        {{/if}}
+
+        <h3>Simular Wallet</h3>
+        <form action="/admin/simulate-wallet" method="POST" class="mb-4">
+            <div class="form-group">
+                <label for="amount">Monto a agregar:</label>
+                <input type="number" id="amount" name="amount" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Actualizar Wallet</button>
+        </form>
+
+        <h3>Gestión de Clientes</h3>
+
+        <!-- Botones para gestionar clientes -->
+        <div class="mb-4">
+            <a href="/admin/clientes/crear" class="btn btn-success">Añadir Cliente</a>
+            <a href="/admin/clientes/editar" class="btn btn-warning">Editar Clientes</a>
+            <a href="/admin/clientes/delete" class="btn btn-danger">Eliminar Clientes</a>
+        </div>
+
+        <h3>Lista de Productos</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td>{{this.name}}</td>
+                        <td>${{this.price}}</td>
+                        <td>
+                            <a href="/products/edit/{{this.id}}" class="btn btn-warning btn-sm">Editar</a>
+                            <form action="/products/delete/{{this.id}}" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <!-- Lista de usuarios -->
+        <section>
+            <h2>Usuarios</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>RUT</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Saldo</th>
+                        <th>Minutos Totales</th>
+                        <th>Minutos Disponibles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                        <tr>
+                            <td>{{rut_cliente}}</td>
+                            <td>{{nombre}}</td>
+                            <td>{{correo}}</td>
+                            <td>{{saldo}}</td>
+                            <td>{{minutos_total}}</td>
+                            <td>{{minutos_disponibles}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Buscar Usuario por RUT</h2>
+            <form action="/admin/user" method="GET">
+                <label for="rut">Escribe el RUT del cliente:</label>
+                <input type="text" id="rut" name="rut_cliente" placeholder="Ej: 12345678-9" required>
+                <button type="submit">Buscar</button>
+            </form>
+        </section>
+
+        <!-- Formulario para ingresar el RUT -->
+        <h2>Consulta de Detalles de Pagos</h2>
+        <form action="/admin/payments" method="get">
+            <label for="rut_cliente">Ingresa el RUT del Cliente:</label>
+            <input type="text" id="rut_cliente" name="rut_cliente" required>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <h1>Equipos Más Usados en el Último Mes</h1>
+
+        {{#if equiposUsados.length}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Estado</th>
+                    <th>Cantidad de Uso</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each equiposUsados}}
+                    <tr>
+                        <td>{{this.codigo}}</td>
+                        <td>{{this.estado}}</td>
+                        <td>{{this.cantidad_uso}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <p>No hay equipos utilizados en el último mes.</p>
+        {{/if}}
+
+        <h1>Tiempo Promedio de las Sesiones por Usuario</h1>
+
+        {{#if tiempoPromedioSesiones.length}}
+        <table>
+            <thead>
+                <tr>
+                    <th>RUT Cliente</th>
+                    <th>Nombre</th>
+                    <th>Tiempo Promedio de Sesión (minutos)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each tiempoPromedioSesiones}}
+                    <tr>
+                        <td>{{this.rut_cliente}}</td>
+                        <td>{{this.nombre}}</td>
+                        <td>{{this.tiempo_promedio_sesion}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <p>No hay sesiones registradas para calcular el tiempo promedio.</p>
+        {{/if}}
+
+        <h2>Mantenciones Realizadas en Diciembre 2024</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Componente</th>
+                    <th>Estado Componente</th>
+                    <th>Fecha Mantención</th>
+                    <th>Tiempo Utilizado (minutos)</th>
+                    <th>Estado Equipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each mantenciones}}
+                    <tr>
+                        <td>{{componente}}</td>
+                        <td>{{estado_componente}}</td>
+                        <td>{{fecha_mantencion}}</td>
+                        <td>{{tiempo_utilizado}}</td>
+                        <td>{{estado_equipo}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <h2>Empleado con más días faltados por motivos externos</h2>
+        {{#if empleadoMasFaltas}}
+        <p><strong>Nombre:</strong> {{empleadoMasFaltas.empleado}}</p>
+        <p><strong>Total de faltas:</strong> {{empleadoMasFaltas.total_faltas}}</p>
+        {{/if}}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

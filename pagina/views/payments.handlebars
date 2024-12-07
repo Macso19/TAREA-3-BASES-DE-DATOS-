@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles de los Pagos</title>
+  <link rel="stylesheet" href="/path/to/your/styles.css"> <!-- Si tienes estilos adicionales -->
+</head>
+<body>
+
+  <h2>Detalles de los Pagos del Cliente</h2>
+
+  {{#if pagos}}
+    <table border="1">
+      <thead>
+        <tr>
+          <th>RUT Cliente</th>
+          <th>Fecha de Pago</th>
+          <th>Monto Pagado</th>
+          <th>Código de Equipo</th>
+          <th>Minutos en Sesión</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each pagos}}
+          <tr>
+            <td>{{rut_cliente}}</td>
+            <td>{{fecha_pago}}</td>
+            <td>{{monto}}</td>
+            <td>{{codigo}}</td>
+            <td>{{minutos_total}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <p>No se encontraron pagos para este cliente en el último mes.</p>
+  {{/if}}
+
+  <br>
+  <a href="/admin">Volver a la administración</a> <!-- Enlace para volver a la página de administración -->
+
+</body>
+</html>

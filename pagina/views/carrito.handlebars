@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Carrito de Compras</h2>
+        <div class="row">
+            {{#each cartItems}}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{this.image}}" class="card-img-top" alt="{{this.name}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text">Precio: ${{this.price}}</p>
+                        <p class="card-text">Cantidad: {{this.quantity}}</p>
+                        <p class="card-text">Total: ${{this.total}}</p>
+                        <form action="/cart/remove/{{this.id}}" method="POST">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <h3>Total Carrito: ${{total}}</h3>
+        <form action="/cart/checkout" method="POST">
+            <button type="submit" class="btn btn-success mt-3">Finalizar Compra</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

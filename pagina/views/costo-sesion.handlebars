@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Costo de la Sesión</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Costo de la Sesión</h1>
+
+        {{#if sesion}}
+        <div class="alert alert-info">
+            <p><strong>Fecha:</strong> {{sesion.fecha}}</p>
+            <p><strong>RUT del Cliente:</strong> {{sesion.rut_cliente}}</p>
+            <p><strong>Minutos Totales:</strong> {{sesion.minutos_total}}</p>
+            <p><strong>Costo por Minuto:</strong> ${{sesion.costo_por_minuto}}</p>
+            <p><strong>Costo Total:</strong> ${{sesion.costo_total}}</p>
+        </div>
+        {{else}}
+        <div class="alert alert-warning">{{error}}</div>
+        {{/if}}
+
+        <a href="/" class="btn btn-primary">Volver a Inicio</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+  <div class="card p-4 shadow" style="max-width: 400px; width: 100%;">
+    <h2 class="text-center mb-4">Iniciar Sesión</h2>
+    
+    {{#if error}}
+      <div class="alert alert-danger text-center" role="alert">
+        HAS INGRESADO INCORRECTAMENTE LOS DATOS. POR FAVOR, REVISA ADECUADAMENTE LO QUE ESTÁS INTENTANDO INGRESAR PARA PODER INGRESAR.
+      </div>
+    {{/if}}
+
+    <form action="/login" method="POST">
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo</label>
+        <input name="email" id="email" class="form-control" placeholder="Ingresa tu correo" required />
+      </div>
+      
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input name="password" id="password" type="password" class="form-control" placeholder="Ingresa tu contraseña" required />
+      </div>
+      
+      <button type="submit" class="btn btn-primary w-100">Entrar</button>
+    </form>
+  </div>
+</div>

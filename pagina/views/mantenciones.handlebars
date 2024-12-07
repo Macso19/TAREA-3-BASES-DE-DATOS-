@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenciones Realizadas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Mantenciones Realizadas</h1>
+        <h4>Mes: {{mes}} | Año: {{anio}}</h4>
+
+        {{#if mantenciones.length}}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Código del Equipo</th>
+                    <th>Componente</th>
+                    <th>Estado del Componente</th>
+                    <th>Tiempo Utilizado (minutos)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each mantenciones}}
+                <tr>
+                    <td>{{this.fecha}}</td>
+                    <td>{{this.codigo}}</td>
+                    <td>{{this.componente}}</td>
+                    <td>{{this.estado_componente}}</td>
+                    <td>{{this.tiempo_utilizado}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <div class="alert alert-warning">No se encontraron mantenciones para este mes y año.</div>
+        {{/if}}
+
+        <a href="/" class="btn btn-primary">Volver a Inicio</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

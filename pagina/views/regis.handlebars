@@ -1,0 +1,31 @@
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4 shadow" style="margin-top: 50px;">
+                <h1 class="text-center mb-4">REGISTRO</h1>
+                <form action="/regis" method="post">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" name="is_admin" class="form-check-input" id="isAdmin" value="true">
+                        <label class="form-check-label" for="isAdmin">¿Eres Admin?</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nombre de Usuario</label>
+                        <input type="text" name="name" class="form-control" id="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" name="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" name="password" class="form-control" id="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Registrar</button>
+                    <div class="mt-3 text-center">
+                        <span>¿Ya tienes cuenta? <a href="/login">¡Inicia tu sesión!</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

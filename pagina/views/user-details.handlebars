@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles del Usuario</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin: 20px auto;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+      font-weight: bold;
+    }
+    a {
+      display: inline-block;
+      margin: 20px;
+      text-decoration: none;
+      color: #007BFF;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Detalles del Usuario</h1>
+
+  <!-- Información del usuario -->
+  <table>
+    <tr>
+      <th>RUT</th>
+      <td>{{user.rut_cliente}}</td>
+    </tr>
+    <tr>
+      <th>Nombre</th>
+      <td>{{user.nombre}}</td>
+    </tr>
+    <tr>
+      <th>Correo</th>
+      <td>{{user.correo}}</td>
+    </tr>
+    <tr>
+      <th>Saldo</th>
+      <td>{{user.saldo}}</td>
+    </tr>
+    <tr>
+      <th>Minutos Totales</th>
+      <td>{{user.minutos_total}}</td>
+    </tr>
+    <tr>
+      <th>Minutos Disponibles</th>
+      <td>{{user.minutos_disponibles}}</td>
+    </tr>
+  </table>
+
+  <!-- Botón para regresar -->
+  <a href="/admin">← Volver al Panel de Administración</a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleado con más Mantenciones</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+    <h1>Empleado con más Mantenciones en el Intervalo de Fechas</h1>
+
+    {{#if empleado}}
+        <div>
+            <p><strong>RUT del Empleado:</strong> {{empleado.rut_empleado}}</p>
+            <p><strong>Nombre del Empleado:</strong> {{empleado.nombre}}</p>
+            <p><strong>Cantidad de Mantenciones Realizadas:</strong> {{empleado.cantidad_mantenciones}}</p>
+        </div>
+    {{else}}
+        <p>No se encontraron mantenciones realizadas en el intervalo de fechas proporcionado.</p>
+    {{/if}}
+
+    <a href="/admin">Volver a la página de administración</a>
+
+</body>
+</html>

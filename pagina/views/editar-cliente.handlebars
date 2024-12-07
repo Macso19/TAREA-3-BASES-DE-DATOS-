@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cliente</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Editar Cliente</h1>
+        <form method="POST" action="/admin/clientes/editar/{{cliente.rut_cliente}}">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" class="form-control" value="{{cliente.nombre}}" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" class="form-control" value="{{cliente.correo}}" required>
+            </div>
+            <div class="form-group">
+                <label for="saldo">Saldo:</label>
+                <input type="number" id="saldo" name="saldo" class="form-control" value="{{cliente.saldo}}">
+            </div>
+            <div class="form-group">
+                <label for="minutos_total">Minutos Totales:</label>
+                <input type="number" id="minutos_total" name="minutos_total" class="form-control" value="{{cliente.minutos_total}}">
+            </div>
+            <div class="form-group">
+                <label for="minutos_disponibles">Minutos Disponibles:</label>
+                <input type="number" id="minutos_disponibles" name="minutos_disponibles" class="form-control" value="{{cliente.minutos_disponibles}}">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+    </div>
+</body>
+</html>
